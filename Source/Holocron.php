@@ -27,7 +27,22 @@ class Holocron
 
     public function get(string $RID): AtomEntity
     {
-        $data = [];
-        return AtomEntity::create($data);
+        $pathLocal = '/' . str_replace(':', '/', $RID);
+        $pathGlobal = $this->getRootFolder() . $pathLocal;
+
+        $data = [
+            'path' => $pathGlobal,
+        ];
+        $type = null;
+
+        if(is_dir($pathLocal))
+        {
+            $type = 'Node';
+        }
+
+        Assert::notNull($type);
+
+        $atomTypeClass = "\\Liloi\\Holocron\\$type\\Entity";
+        return $atomTypeClass::create($data);
     }
 }
