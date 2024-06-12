@@ -5,7 +5,8 @@
     "minimum-stability": "dev",
     "require": {
         "technomage-liloi/judex": "dev-main",
-        "technomage-liloi/stylo": "dev-main"
+        "technomage-liloi/stylo": "dev-main",
+        "technomage-liloi/rune-tools": "dev-main"
     },
     "require-dev": {
         "roave/security-advisories": "dev-master"

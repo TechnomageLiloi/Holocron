@@ -2,6 +2,7 @@
 
 namespace Liloi\Holocron;
 
+use Liloi\Holocron\Domain\Atom\Entity as AtomEntity;
 use Liloi\Judex\Assert;
 
 class Holocron
@@ -16,5 +17,17 @@ class Holocron
         $holocron->root = $root;
 
         return $holocron;
+    }
+
+    public function getRootFolder(): string
+    {
+        Assert::notNull($this->root);
+        return $this->root;
+    }
+
+    public function get(string $RID): AtomEntity
+    {
+        $data = [];
+        return AtomEntity::create($data);
     }
 }
