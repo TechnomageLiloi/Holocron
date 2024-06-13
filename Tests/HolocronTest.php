@@ -26,9 +26,11 @@ class HolocronTest extends TestCase
         $this->assertTrue($holocron instanceof Holocron);
         $this->assertEquals($root, $holocron->getRootFolder());
 
-        $this->assertTrue($holocron->get('') instanceof NodeEntity);
+        $idRoot = '';
+        $this->assertTrue($holocron->get($idRoot) instanceof NodeEntity);
         /** @var NodeEntity $rootNode */
-        $rootNode = $holocron->get('');
+        $rootNode = $holocron->get($idRoot);
+        $this->assertEquals($idRoot, $rootNode->getID());
         $this->assertEquals($root, $rootNode->getPath());
 
         $idIndexJson = 'index:json';
