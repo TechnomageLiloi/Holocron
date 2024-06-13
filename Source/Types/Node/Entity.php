@@ -11,6 +11,7 @@ class Entity extends AbstractEntity
     public function getChildren(): Collection
     {
         $collection = new Collection();
+        $holocron = $this->getHolocron();
 
         $parent = $this->getPath();
 
@@ -27,7 +28,8 @@ class Entity extends AbstractEntity
                 $parts = pathinfo($child);
 
                 $data = [
-                    'path' => $child
+                    'path' => $child,
+                    'holocron' => $holocron
                 ];
 
                 if(is_dir($child))

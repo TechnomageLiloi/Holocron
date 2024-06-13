@@ -53,6 +53,7 @@ class Holocron
         }
 
         $data['path'] = $pathGlobal;
+        $data['holocron'] = $this;
 
         Assert::notNull($type);
 
