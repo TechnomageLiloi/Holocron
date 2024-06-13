@@ -25,9 +25,9 @@ class Holocron
         return $this->root;
     }
 
-    public function get(string $RID): SphereEntity
+    public function get(string $id): SphereEntity
     {
-        $pathLocal = '/' . str_replace(':', '/', $RID);
+        $pathLocal = '/' . str_replace(':', '/', $id);
         $pathGlobal = rtrim($this->getRootFolder() . $pathLocal, '/');
 
         $data = [];

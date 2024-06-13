@@ -31,13 +31,17 @@ class HolocronTest extends TestCase
         $rootNode = $holocron->get('');
         $this->assertEquals($root, $rootNode->getPath());
 
-        $this->assertTrue($holocron->get('index:json') instanceof AtomEntity);
-        $atomIndex = $holocron->get('index:json');
+        $idIndexJson = 'index:json';
+        $this->assertTrue($holocron->get($idIndexJson) instanceof AtomEntity);
+        $atomIndex = $holocron->get($idIndexJson);
+        $this->assertEquals($idIndexJson, $atomIndex->getID());
         $this->assertEquals($root . '/index.json', $atomIndex->getPath());
 
-        $this->assertTrue($holocron->get('test:index:json') instanceof AtomEntity);
-        $atomIndex = $holocron->get('test:index:json');
-        $this->assertEquals($root . '/test/index.json', $atomIndex->getPath());
+        $idTestIndexJson = 'test:index:json';
+        $this->assertTrue($holocron->get($idTestIndexJson) instanceof AtomEntity);
+        $atomTestIndex = $holocron->get($idTestIndexJson);
+        $this->assertEquals($idTestIndexJson, $atomTestIndex->getID());
+        $this->assertEquals($root . '/test/index.json', $atomTestIndex->getPath());
 
         $children = $rootNode->getChildren();
         $this->assertEquals(2, $children->count());
