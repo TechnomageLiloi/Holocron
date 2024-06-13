@@ -30,15 +30,29 @@ class Holocron
         $pathLocal = '/' . str_replace(':', '/', $RID);
         $pathGlobal = rtrim($this->getRootFolder() . $pathLocal, '/');
 
-        $data = [
-            'path' => $pathGlobal,
-        ];
+        $data = [];
         $type = null;
 
         if(is_dir($pathLocal))
         {
             $type = 'Node';
         }
+        else
+        {
+            $parts = explode('/', $pathGlobal);
+
+            $parts[count($parts) - 2] .= '.' . end($parts);
+            array_pop($parts);
+
+            $pathGlobal = implode('/', $parts);
+
+            if(file_exists($pathGlobal))
+            {
+                $type = 'Atom';
+            }
+        }
+
+        $data['path'] = $pathGlobal;
 
         Assert::notNull($type);
 
