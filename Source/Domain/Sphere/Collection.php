@@ -1,6 +1,6 @@
 <?php
 
-namespace Liloi\Holocron\Domain\Atom;
+namespace Liloi\Holocron\Domain\Sphere;
 
 use Liloi\Tools\Collection as AbstractCollection;
 

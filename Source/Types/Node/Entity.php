@@ -2,7 +2,7 @@
 
 namespace Liloi\Holocron\Types\Node;
 
-use Liloi\Holocron\Domain\Atom\Entity as AbstractEntity;
+use Liloi\Holocron\Domain\Sphere\Entity as AbstractEntity;
 
 class Entity extends AbstractEntity
 {

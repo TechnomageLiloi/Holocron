@@ -2,7 +2,7 @@
 
 namespace Liloi\Holocron;
 
-use Liloi\Holocron\Domain\Atom\Entity as AtomEntity;
+use Liloi\Holocron\Domain\Sphere\Entity as SphereEntity;
 use Liloi\Judex\Assert;
 
 class Holocron
@@ -25,7 +25,7 @@ class Holocron
         return $this->root;
     }
 
-    public function get(string $RID): AtomEntity
+    public function get(string $RID): SphereEntity
     {
         $pathLocal = '/' . str_replace(':', '/', $RID);
         $pathGlobal = rtrim($this->getRootFolder() . $pathLocal, '/');
