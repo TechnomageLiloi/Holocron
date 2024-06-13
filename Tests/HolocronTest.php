@@ -4,6 +4,7 @@ namespace Liloi\Holocron;
 
 use PHPUnit\Framework\TestCase;
 use Liloi\Holocron\Holocron;
+use Liloi\Holocron\Domain\Sphere\Entity as SphereEntity;
 use Liloi\Holocron\Types\Node\Entity as NodeEntity;
 use Liloi\Holocron\Types\Atom\Entity as AtomEntity;
 
@@ -26,6 +27,7 @@ class HolocronTest extends TestCase
         $this->assertEquals($root, $holocron->getRootFolder());
 
         $this->assertTrue($holocron->get('') instanceof NodeEntity);
+        /** @var NodeEntity $rootNode */
         $rootNode = $holocron->get('');
         $this->assertEquals($root, $rootNode->getPath());
 
@@ -36,5 +38,8 @@ class HolocronTest extends TestCase
         $this->assertTrue($holocron->get('test:index:json') instanceof AtomEntity);
         $atomIndex = $holocron->get('test:index:json');
         $this->assertEquals($root . '/test/index.json', $atomIndex->getPath());
+
+        $children = $rootNode->getChildren();
+        $this->assertEquals(2, $children->count());
     }
 }
