@@ -21,7 +21,7 @@ class HolocronTest extends TestCase
         $root = __DIR__ . '/Sandbox';
         $this->assertTrue(class_exists('Liloi\Holocron\Holocron'));
 
-        $holocron = Holocron::create($root);
+        $holocron = Holocron::create($root, '/Sandbox');
 
         $this->assertTrue($holocron instanceof Holocron);
         $this->assertEquals($root, $holocron->getRootFolder());
@@ -32,18 +32,21 @@ class HolocronTest extends TestCase
         $rootNode = $holocron->get($idRoot);
         $this->assertEquals($idRoot, $rootNode->getID());
         $this->assertEquals($root, $rootNode->getPath());
+        $this->assertEquals('/Sandbox', $rootNode->getLink());
 
         $idIndexJson = 'index:json';
         $this->assertTrue($holocron->get($idIndexJson) instanceof AtomEntity);
         $atomIndex = $holocron->get($idIndexJson);
         $this->assertEquals($idIndexJson, $atomIndex->getID());
         $this->assertEquals($root . '/index.json', $atomIndex->getPath());
+        $this->assertEquals('/Sandbox/index.json', $atomIndex->getLink());
 
         $idTestIndexJson = 'test:index:json';
         $this->assertTrue($holocron->get($idTestIndexJson) instanceof AtomEntity);
         $atomTestIndex = $holocron->get($idTestIndexJson);
         $this->assertEquals($idTestIndexJson, $atomTestIndex->getID());
         $this->assertEquals($root . '/test/index.json', $atomTestIndex->getPath());
+        $this->assertEquals('/Sandbox/test/index.json', $atomTestIndex->getLink());
 
         $children = $rootNode->getChildren();
         $this->assertEquals(2, $children->count());

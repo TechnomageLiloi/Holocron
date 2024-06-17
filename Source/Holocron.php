@@ -7,22 +7,34 @@ use Liloi\Judex\Assert;
 
 class Holocron
 {
-    private ?string $root = null;
+    private ?string $rootPath = null;
+    private ?string $rootLink = null;
 
-    public static function create(string $root): self
+    public static function create(
+        string $rootPath,
+        string $rootLink = '/'
+    ): self
     {
-        Assert::notEmpty($root);
+        Assert::notEmpty($rootPath);
+        Assert::notEmpty($rootLink);
 
         $holocron = new self();
-        $holocron->root = $root;
+        $holocron->rootPath = $rootPath;
+        $holocron->rootLink = $rootLink;
 
         return $holocron;
     }
 
     public function getRootFolder(): string
     {
-        Assert::notNull($this->root);
-        return $this->root;
+        Assert::notNull($this->rootPath);
+        return $this->rootPath;
+    }
+
+    public function getRootLink(): string
+    {
+        Assert::notNull($this->rootLink);
+        return $this->rootLink;
     }
 
     public function get(string $id): SphereEntity

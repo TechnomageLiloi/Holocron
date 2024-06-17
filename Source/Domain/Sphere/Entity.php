@@ -22,4 +22,11 @@ class Entity extends AbstractEntity
         $id = str_replace(array('/', '.'), ':', $local);
         return $id;
     }
+
+    public function getLink(): string
+    {
+        $global = $this->getPath();
+        $local = rtrim(str_replace($this->getHolocron()->getRootFolder(), '', $global), '/');
+        return $this->getHolocron()->getRootLink() . $local;
+    }
 }
