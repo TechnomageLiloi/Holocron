@@ -41,6 +41,14 @@ class HolocronTest extends TestCase
         $this->assertEquals($root . '/index.json', $atomIndex->getPath());
         $this->assertEquals('/Sandbox/index.json', $atomIndex->getLink());
 
+        $idTest = 'test';
+        $this->assertTrue($holocron->get($idTest) instanceof NodeEntity);
+        /** @var NodeEntity $rootNode */
+        $testNode = $holocron->get($idTest);
+        $this->assertEquals($idTest, $testNode->getID());
+        $this->assertEquals($root . '/test', $testNode->getPath());
+        $this->assertEquals('/Sandbox/test', $testNode->getLink());
+
         $idTestIndexJson = 'test:index:json';
         $this->assertTrue($holocron->get($idTestIndexJson) instanceof AtomEntity);
         $atomTestIndex = $holocron->get($idTestIndexJson);

@@ -45,7 +45,7 @@ class Holocron
         $data = [];
         $type = null;
 
-        if(is_dir($pathLocal))
+        if(is_dir($pathGlobal))
         {
             $type = 'Node';
         }
