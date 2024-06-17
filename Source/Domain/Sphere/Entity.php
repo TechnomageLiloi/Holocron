@@ -29,4 +29,23 @@ class Entity extends AbstractEntity
         $local = rtrim(str_replace($this->getHolocron()->getRootFolder(), '', $global), '/');
         return $this->getHolocron()->getRootLink() . $local;
     }
+
+    /**
+     * PATHINFO_DIRNAME
+     * PATHINFO_BASENAME
+     * PATHINFO_EXTENSION
+     * PATHINFO_FILENAME
+     *
+     * @param null $options
+     * @return string|string[]
+     */
+    public function getInfo($options = null)
+    {
+        if($options === null)
+        {
+            return pathinfo($this->getPath());
+        }
+
+        return pathinfo($this->getPath(), $options);
+    }
 }

@@ -47,6 +47,9 @@ class HolocronTest extends TestCase
         $this->assertEquals($idTestIndexJson, $atomTestIndex->getID());
         $this->assertEquals($root . '/test/index.json', $atomTestIndex->getPath());
         $this->assertEquals('/Sandbox/test/index.json', $atomTestIndex->getLink());
+        $this->assertEquals('json', $atomTestIndex->getInfo(PATHINFO_EXTENSION));
+
+        $this->assertTrue(is_array($atomTestIndex->getInfo()));
 
         $children = $rootNode->getChildren();
         $this->assertEquals(2, $children->count());
